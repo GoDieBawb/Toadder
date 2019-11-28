@@ -25,19 +25,20 @@ public class Lane {
     
     public static float WIDTH  = Display.getWidth()/25;
     public static float HEIGHT = Display.getHeight()/70;
+    private static int  LANE = 0;
     
     private final Node               model;
     private final String             type;
     private final ArrayList<Spatial> nodes;
     private final ArrayList<Entity>  entities; 
-    private final float              speed;
     
+    private float   speed;
     private boolean isLeft;
     
     private int gap;
     
     public Lane(String type, AssetManager a) {
-        
+        LANE++;
         isLeft     = true;
         speed      = randomInt(50,90)/10;
         model      = new Node();
@@ -62,7 +63,8 @@ public class Lane {
             ngeom.setMaterial(nMat);
             ngeom.setLocalTranslation(x*5, 0, 0);
             nodes.add(ngeom);
-            //ngeom.setCullHint(Spatial.CullHint.Always);
+            if (LANE!=7)
+                ngeom.setCullHint(Spatial.CullHint.Always);
             x++;
         }
         
@@ -173,6 +175,10 @@ public class Lane {
     
     public float getSpeed() {
         return speed;
+    }
+    
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
     
     private static final Random R = new Random();

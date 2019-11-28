@@ -41,14 +41,13 @@ public class Main extends SimpleApplication {
         pn.attachChild(pgeom);
         pgeom.setMaterial(pMat);
         
-        new InteractionManager(p, inputManager);
-        
         rootNode.attachChild(pn);
         
         flyCam.setMoveSpeed(10);
         cam.setLocation(new Vector3f(0,15,0));
         cam.lookAtDirection(new Vector3f(0,0,0), new Vector3f(0,1,0));
-        gm = new GameManager(assetManager, rootNode, p);
+        gm = new GameManager(guiNode, assetManager, rootNode, p);
+        new InteractionManager(p, gm, inputManager);
         gm.initScene();
     }
 

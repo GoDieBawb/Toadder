@@ -16,11 +16,12 @@ public class Player {
     private Node  model;
     private int   currentLane;
     private int   currentNode;
+    private int   score;
     
     public Player(Node model) {
         this.model  = model;
         currentLane = 0;
-        currentNode = 4;
+        currentNode = 5;
     }
     
     public void move(String dir) {
@@ -43,8 +44,24 @@ public class Player {
         
     }
     
+    public int getScore() {
+        return score;
+    }
+    
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
+    public void setCurrentLane(int currentLane) {
+        this.currentLane = currentLane;
+    }
+    
     public int getCurrentLane() {
         return currentLane;
+    }
+    
+    public void setCurrentNode(int currentNode) {
+        this.currentNode = currentNode;
     }
     
     public int getCurrentNode() {
@@ -53,6 +70,12 @@ public class Player {
     
     public Node getModel() {
         return model;
+    }
+    
+    public void die() {
+        score       = 0;
+        currentNode = 5;
+        currentLane = 0;
     }
     
 }
