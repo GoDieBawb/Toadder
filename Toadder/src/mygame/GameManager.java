@@ -216,6 +216,7 @@ public class GameManager {
             
             if (results.size() > 0) {
                 player.die();
+                reset();
                 updatePlayer();
                 showTitle();
             }
